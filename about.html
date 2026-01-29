@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - RJ's Mixed Bullets</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-color: #8D6E63;
+            --secondary-color: #F8F5F2;
+            --text-dark: #3E2723;
+            --text-muted: #795548;
+            --accent-light: #D7CCC8;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--secondary-color);
+            color: var(--text-dark);
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            color: var(--text-dark);
+        }
+
+        /* Navbar (Sama seperti halaman depan) */
+        .navbar {
+            padding: 1.5rem 0;
+        }
+
+        .nav-link {
+            color: var(--text-muted) !important;
+            font-weight: 500;
+        }
+
+        .btn-custom {
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 0;
+            padding: 10px 25px;
+            transition: 0.3s;
+        }
+
+        .btn-custom:hover {
+            background-color: #6D4C41;
+            color: white;
+        }
+
+        /* Page Header */
+        .page-header {
+            background-color: var(--accent-light);
+            padding: 80px 0;
+            margin-bottom: 50px;
+            text-align: center;
+            background-image: url('https://placehold.co/1200x400/D7CCC8/888?text=Background+Pattern');
+            background-size: cover;
+            background-blend-mode: soft-light;
+        }
+
+        /* Content Sections */
+        section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        /* Values Cards */
+        .value-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid #efebe9;
+            transition: transform 0.3s;
+            height: 100%;
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .value-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        /* Team Members */
+        .team-img {
+            border-radius: 15px;
+            margin-bottom: 20px;
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            filter: grayscale(20%);
+            transition: 0.3s;
+        }
+
+        .team-member:hover .team-img {
+            filter: grayscale(0%);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #D7CCC8;
+            padding: 40px 0;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg sticky-top bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">RJ's.</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav text-center">
+                    <li class="nav-item mx-2"><a class="nav-link" href="shop.html">Shop</a></li>
+                    <li class="nav-item mx-2"><a class="nav-link active" href="about.html">About</a></li>
+                    <li class="nav-item mx-2"><a class="nav-link" href="blog.html">Journal</a></li>
+                    <li class="nav-item mx-2"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="d-flex justify-content-center align-items-center gap-2 mt-3 mt-lg-0">
+                <a href="https://wa.me/6281234567890" target="_blank" class="btn btn-success rounded-0">
+                    <i class="fab fa-whatsapp me-2"></i>WhatsApp
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <h1 class="display-4 fw-bold">Our Story</h1>
+            <p class="lead text-muted">Crafting moments of joy, one bullet at a time.</p>
+        </div>
+    </header>
+
+    <section>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 mb-4 mb-md-0">
+                    <img src="assets/images/process_kitchen.png" class="img-fluid rounded-4 shadow-sm"
+                        alt="Our Kitchen">
+                </div>
+                <div class="col-md-6 ps-md-5">
+                    <h2 class="section-title">A Sweet Beginning</h2>
+                    <p class="text-muted">
+                        RJ's Confectionery dimulai dari sebuah dapur kecil pada tahun 2015.
+                        Bermula dari kecintaan kami terhadap cokelat murni tanpa bahan pengawet,
+                        kami bereksperimen menciptakan "Bullets" — butiran cokelat dengan isian
+                        unik yang meledak di mulut.
+                    </p>
+                    <p class="text-muted">
+                        Visi kami sederhana: Mengembalikan rasa asli kakao yang sering hilang
+                        dalam produksi massal. Kami bekerja sama langsung dengan petani lokal
+                        di Jawa dan Sumatera untuk mendapatkan biji kakao fermentasi terbaik.
+                    </p>
+                    <img src="https://placehold.co/150x60/transparent/3E2723?text=Signature" alt="Signature"
+                        style="opacity: 0.6;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-white">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Our Values</h2>
+                <p class="text-muted">Prinsip yang kami pegang dalam setiap kemasan.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="value-card">
+                        <i class="fas fa-leaf value-icon"></i>
+                        <h4>100% Natural</h4>
+                        <p class="text-muted small">Tanpa pengawet buatan, pewarna sintetik, atau pemanis berlebih.
+                            Murni dari alam.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="value-card">
+                        <i class="fas fa-hand-holding-heart value-icon"></i>
+                        <h4>Handcrafted</h4>
+                        <p class="text-muted small">Dibuat dalam batch kecil (small batch) untuk memastikan detail dan
+                            kualitas rasa.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="value-card">
+                        <i class="fas fa-recycle value-icon"></i>
+                        <h4>Sustainable</h4>
+                        <p class="text-muted small">Kemasan ramah lingkungan dan sistem perdagangan adil (fair trade)
+                            bagi petani.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <h2 class="section-title text-center mb-5">Meet the Makers</h2>
+            <div class="row g-4">
+                <div class="col-md-4 team-member">
+                    <img src="assets/images/team_group.png" class="team-img" alt="Founder"
+                        style="object-position: center;">
+                    <div class="text-center">
+                        <h4 class="mb-1">Sarah Jenkins</h4>
+                        <p class="text-muted text-uppercase small">Founder & Head Chocolatier</p>
+                    </div>
+                </div>
+                <div class="col-md-4 team-member">
+                    <img src="assets/images/team_group.png" class="team-img" alt="Manager"
+                        style="object-position: left;">
+                    <div class="text-center">
+                        <h4 class="mb-1">Robert Davis</h4>
+                        <p class="text-muted text-uppercase small">Production Manager</p>
+                    </div>
+                </div>
+                <div class="col-md-4 team-member">
+                    <img src="assets/images/team_group.png" class="team-img" alt="Marketing"
+                        style="object-position: right;">
+                    <div class="text-center">
+                        <h4 class="mb-1">Elena Roy</h4>
+                        <p class="text-muted text-uppercase small">Creative Director</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="text-center">
+        <div class="container">
+            <div class="mb-4">
+                <a class="navbar-brand fw-bold fs-3" href="#">RJ's.</a>
+            </div>
+            <div class="mb-4">
+                <a href="index.html" class="text-decoration-none text-muted mx-2">Shop</a>
+                <a href="about.html" class="text-decoration-none text-muted mx-2">About</a>
+                <a href="#" class="text-decoration-none text-muted mx-2">Contact</a>
+            </div>
+            <p class="text-muted small">&copy; 2026 RJ's Confectionery. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

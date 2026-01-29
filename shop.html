@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop - RJ's Mixed Bullets</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-color: #8D6E63;
+            --secondary-color: #F8F5F2;
+            --text-dark: #3E2723;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--secondary-color);
+            color: var(--text-dark);
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .navbar {
+            padding: 1.5rem 0;
+        }
+
+        .nav-link {
+            color: #795548 !important;
+            font-weight: 500;
+        }
+
+        .nav-link.active {
+            color: var(--text-dark) !important;
+            font-weight: 700;
+        }
+
+        /* Shop Specific */
+        .filter-sidebar {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .filter-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 10px;
+        }
+
+        .form-check-input:checked {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .product-card {
+            background: #fff;
+            border: none;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            transition: 0.3s;
+            margin-bottom: 24px;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .product-img {
+            max-width: 120px;
+            margin-bottom: 15px;
+        }
+
+        .price {
+            color: var(--primary-color);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .btn-add {
+            background-color: var(--text-dark);
+            color: white;
+            border-radius: 50px;
+            padding: 5px 20px;
+            font-size: 0.8rem;
+        }
+
+        .btn-add:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        footer {
+            background-color: #D7CCC8;
+            padding: 40px 0;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg sticky-top bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">RJ's.</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav text-center">
+                    <li class="nav-item mx-2"><a class="nav-link active" href="shop.html">Shop</a></li>
+                    <li class="nav-item mx-2"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item mx-2"><a class="nav-link" href="blog.html">Journal</a></li>
+                    <li class="nav-item mx-2"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="d-flex justify-content-center align-items-center gap-2 mt-3 mt-lg-0">
+                <a href="#" class="btn btn-outline-dark rounded-0">Cart (0)</a>
+                <a href="https://wa.me/6281234567890" target="_blank" class="btn btn-success rounded-0">
+                    <i class="fab fa-whatsapp me-2"></i>WhatsApp
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-lg-3 mb-4">
+                <div class="filter-sidebar">
+                    <div class="mb-4">
+                        <h5 class="filter-title">Categories</h5>
+                        <div class="form-check">
+                            <input class="form-check-input category-filter" type="checkbox" id="cat-all" value="all"
+                                checked>
+                            <label class="form-check-label" for="cat-all">All Products</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input category-filter" type="checkbox" id="cat-dark" value="dark">
+                            <label class="form-check-label" for="cat-dark">Dark Chocolate</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input category-filter" type="checkbox" id="cat-milk" value="milk">
+                            <label class="form-check-label" for="cat-milk">Milk Chocolate</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input category-filter" type="checkbox" id="cat-gift" value="gift">
+                            <label class="form-check-label" for="cat-gift">Gift Packs</label>
+                        </div>
+                    </div>
+                    <div>
+                        <h5 class="filter-title">Price Range: <span id="price-display" class="text-primary">$100</span>
+                        </h5>
+                        <input type="range" class="form-range" min="0" max="100" value="100" id="priceRange">
+                        <div class="d-flex justify-content-between small text-muted"><span>$0</span><span>$100</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-9">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2 class="mb-0">All Collections <span class="fs-5 text-muted ms-2" id="results-count">(0)</span>
+                    </h2>
+                    <select class="form-select w-auto border-0 bg-transparent" id="sort-select">
+                        <option value="popular">Sort by: Popular</option>
+                        <option value="price-asc">Price: Low to High</option>
+                        <option value="price-desc">Price: High to Low</option>
+                        <option value="newest">Newest</option>
+                    </select>
+                </div>
+
+                <!-- Product Grid -->
+                <div class="row" id="product-grid">
+                    <!-- Products will be injected here -->
+                </div>
+
+                <!-- Pagination -->
+                <nav class="mt-4" id="pagination-nav">
+                    <ul class="pagination justify-content-center" id="pagination-list">
+                        <!-- Pagination buttons injected here -->
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <footer class="text-center">
+        <div class="container">
+            <p class="text-muted small">&copy; 2026 RJ's Confectionery.</p>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // --- DATA ---
+        const products = [
+            { id: 1, name: "Sweet Berries", price: 12.00, category: ["milk"], image: "assets/images/prod_pink.png", popular: 5, date: "2025-12-01" },
+            { id: 2, name: "Mixed Bullets", price: 15.00, category: ["milk", "dark"], image: "assets/images/prod_mixed.png", popular: 4, date: "2026-01-10" },
+            { id: 3, name: "Choco Mint", price: 14.00, category: ["dark"], image: "assets/images/prod_mint.png", popular: 3, date: "2025-11-20" },
+            { id: 4, name: "Dark 80%", price: 18.00, category: ["dark"], image: "assets/images/prod_dark.png", popular: 4, date: "2025-10-05" },
+            { id: 5, name: "Salted Caramel", price: 16.00, category: ["milk"], image: "assets/images/prod_caramel.png", popular: 5, date: "2026-01-15" },
+            { id: 6, name: "Hazelnut Supreme", price: 20.00, category: ["gift", "milk"], image: "assets/images/prod_mixed.png", popular: 5, date: "2026-01-20" },
+            { id: 7, name: "Golden Box", price: 45.00, category: ["gift"], image: "assets/images/prod_caramel.png", popular: 2, date: "2026-01-25" },
+            { id: 8, name: "Matcha White", price: 17.00, category: ["milk"], image: "assets/images/prod_mint.png", popular: 1, date: "2026-01-01" },
+        ];
+
+        // --- STATE ---
+        let state = {
+            filters: {
+                categories: new Set(['all']),
+                maxPrice: 100
+            },
+            sort: 'popular',
+            currentPage: 1,
+            itemsPerPage: 6,
+            cart: 0
+        };
+
+        // --- ELEMENTS ---
+        const grid = document.getElementById('product-grid');
+        const priceRange = document.getElementById('priceRange');
+        const priceDisplay = document.getElementById('price-display');
+        const catCheckboxes = document.querySelectorAll('.category-filter');
+        const sortSelect = document.getElementById('sort-select');
+        const resultsCountStr = document.getElementById('results-count');
+        const paginationList = document.getElementById('pagination-list');
+        // Select Cart Button specifically. It is the first btn-outline-dark in the navbar.
+        const cartBtn = document.querySelector('.navbar .d-flex .btn-outline-dark');
+
+        // --- INIT ---
+        function init() {
+            render();
+            setupEventListeners();
+            loadCart();
+        }
+
+        // --- LOGIC ---
+        function getFilteredProducts() {
+            return products.filter(p => {
+                // Price Filter
+                if (p.price > state.filters.maxPrice) return false;
+
+                // Category Filter
+                if (state.filters.categories.has('all')) return true;
+                // Check if product touches any selected category
+                const hasMatch = p.category.some(c => state.filters.categories.has(c));
+                return hasMatch;
+            });
+        }
+
+        function getSortedProducts(items) {
+            const sorted = [...items];
+            if (state.sort === 'price-asc') {
+                sorted.sort((a, b) => a.price - b.price);
+            } else if (state.sort === 'price-desc') {
+                sorted.sort((a, b) => b.price - a.price);
+            } else if (state.sort === 'newest') {
+                sorted.sort((a, b) => new Date(b.date) - new Date(a.date));
+            } else {
+                // popular
+                sorted.sort((a, b) => b.popular - a.popular);
+            }
+            return sorted;
+        }
+
+        function render() {
+            let items = getFilteredProducts();
+            items = getSortedProducts(items);
+
+            // Update Count
+            resultsCountStr.textContent = `(${items.length})`;
+
+            // Pagination Logic
+            const totalPages = Math.ceil(items.length / state.itemsPerPage);
+            // Ensure current page is valid
+            if (state.currentPage > totalPages) state.currentPage = totalPages || 1;
+
+            const start = (state.currentPage - 1) * state.itemsPerPage;
+            const end = start + state.itemsPerPage;
+            const paginatedItems = items.slice(start, end);
+
+            // HTML Generation
+            if (items.length === 0) {
+                grid.innerHTML = '<div class="col-12 text-center py-5"><h4>No products found matching your criteria.</h4></div>';
+            } else {
+                grid.innerHTML = paginatedItems.map(p => `
+                    <div class="col-md-4 col-6">
+                        <div class="product-card h-100">
+                            <img src="${p.image}" class="product-img" alt="${p.name}">
+                            <h5>${p.name}</h5>
+                            <p class="price">$${p.price.toFixed(2)}</p>
+                            <button class="btn btn-add" onclick="addToCart(${p.id})">Add to Cart</button>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            renderPagination(totalPages);
+        }
+
+        function renderPagination(totalPages) {
+            if (totalPages <= 1) {
+                paginationList.innerHTML = '';
+                return;
+            }
+
+            let html = '';
+            // Prev
+            html += `<li class="page-item ${state.currentPage === 1 ? 'disabled' : ''}">
+                        <a class="page-link text-dark" href="#" onclick="changePage(${state.currentPage - 1}); return false;">&laquo;</a>
+                     </li>`;
+
+            // Numbers
+            for (let i = 1; i <= totalPages; i++) {
+                const active = i === state.currentPage ? 'bg-dark text-white border-dark' : 'text-dark';
+                html += `<li class="page-item">
+                            <a class="page-link ${active}" href="#" onclick="changePage(${i}); return false;">${i}</a>
+                         </li>`;
+            }
+
+            // Next
+            html += `<li class="page-item ${state.currentPage === totalPages ? 'disabled' : ''}">
+                        <a class="page-link text-dark" href="#" onclick="changePage(${state.currentPage + 1}); return false;">&raquo;</a>
+                     </li>`;
+
+            paginationList.innerHTML = html;
+        }
+
+        // --- ACTIONS ---
+        function loadCart() {
+            const saved = localStorage.getItem('rj_cart_count');
+            if (saved) {
+                state.cart = parseInt(saved);
+                updateCartUI();
+            }
+        }
+
+        window.addToCart = function (id) {
+            state.cart++;
+            localStorage.setItem('rj_cart_count', state.cart);
+            updateCartUI();
+
+            // Optional: Simple feedback
+            const btn = event.target;
+            const originalText = btn.innerText;
+            btn.innerText = "Added!";
+            btn.classList.add('btn-success');
+            setTimeout(() => {
+                btn.innerText = originalText;
+                btn.classList.remove('btn-success');
+            }, 1000);
+        };
+
+        function updateCartUI() {
+            if (cartBtn) cartBtn.innerText = `Cart (${state.cart})`;
+        }
+
+        window.changePage = function (page) {
+            if (page < 1) return;
+            state.currentPage = page;
+            render();
+            // Scroll to top of grid
+            document.querySelector('.container').scrollIntoView({ behavior: 'smooth' });
+        };
+
+        function setupEventListeners() {
+            // Price
+            priceRange.addEventListener('input', (e) => {
+                state.filters.maxPrice = parseInt(e.target.value);
+                priceDisplay.textContent = `$${state.filters.maxPrice}`;
+                state.currentPage = 1;
+                render();
+            });
+
+            // Categories
+            catCheckboxes.forEach(cb => {
+                cb.addEventListener('change', (e) => {
+                    const val = e.target.value;
+                    const checked = e.target.checked;
+
+                    if (val === 'all') {
+                        if (checked) {
+                            // Uncheck others
+                            catCheckboxes.forEach(box => {
+                                if (box.value !== 'all') box.checked = false;
+                            });
+                            state.filters.categories.clear();
+                            state.filters.categories.add('all');
+                        } else {
+                            // Can't uncheck all if it's the only one, but logic handles empty set
+                            state.filters.categories.delete('all');
+                        }
+                    } else {
+                        // If specific category selected, uncheck 'all'
+                        if (checked) {
+                            document.getElementById('cat-all').checked = false;
+                            state.filters.categories.delete('all');
+                            state.filters.categories.add(val);
+                        } else {
+                            state.filters.categories.delete(val);
+                            // If nothing selected, revert to all?
+                            if (state.filters.categories.size === 0) {
+                                document.getElementById('cat-all').checked = true;
+                                state.filters.categories.add('all');
+                            }
+                        }
+                    }
+                    state.currentPage = 1;
+                    render();
+                });
+            });
+
+            // Sort
+            sortSelect.addEventListener('change', (e) => {
+                state.sort = e.target.value;
+                render();
+            });
+        }
+
+        // Run
+        init();
+    </script>
+</body>
+
+</html>

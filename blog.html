@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journal - RJ's Mixed Bullets</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-color: #8D6E63;
+            --primary-dark: #6D4C41;
+            --secondary-color: #F8F5F2;
+            --text-dark: #3E2723;
+            --text-muted: #795548;
+            --card-bg: #FFFFFF;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--secondary-color);
+            color: var(--text-dark);
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            color: var(--text-dark);
+        }
+
+        /* Navbar & Footer (Konsisten) */
+        .navbar {
+            padding: 1.5rem 0;
+        }
+
+        .nav-link {
+            color: var(--text-muted) !important;
+            font-weight: 500;
+        }
+
+        .nav-link.active {
+            color: var(--text-dark) !important;
+            font-weight: 700;
+        }
+
+        /* Page Header */
+        .page-header {
+            text-align: center;
+            padding: 60px 0 40px;
+        }
+
+        /* Featured Post */
+        .featured-card {
+            border: none;
+            background: transparent;
+            margin-bottom: 60px;
+        }
+
+        .featured-img {
+            height: 400px;
+            object-fit: cover;
+            border-radius: 15px;
+            width: 100%;
+        }
+
+        .meta-text {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        /* Blog Grid Cards */
+        .blog-card {
+            border: none;
+            background-color: transparent;
+            transition: transform 0.3s ease;
+            height: 100%;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .blog-card img {
+            border-radius: 15px;
+            height: 250px;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+
+        .blog-title {
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        .blog-title a {
+            text-decoration: none;
+            color: var(--text-dark);
+            transition: 0.2s;
+        }
+
+        .blog-title a:hover {
+            color: var(--primary-color);
+        }
+
+        .read-more {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 1px solid transparent;
+            transition: 0.3s;
+        }
+
+        .read-more:hover {
+            border-bottom: 1px solid var(--primary-color);
+        }
+
+        /* Sidebar */
+        .sidebar-title {
+            font-size: 1.25rem;
+            border-bottom: 2px solid #EFEBE9;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+
+        .category-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .category-list li {
+            margin-bottom: 12px;
+        }
+
+        .category-list a {
+            color: var(--text-muted);
+            text-decoration: none;
+            display: flex;
+            justify-content: space-between;
+            transition: 0.2s;
+        }
+
+        .category-list a:hover {
+            color: var(--primary-color);
+            padding-left: 5px;
+        }
+
+        /* Pagination Custom */
+        .pagination .page-link {
+            color: var(--text-dark);
+            background-color: transparent;
+            border: 1px solid #D7CCC8;
+            margin: 0 5px;
+            border-radius: 5px;
+        }
+
+        .pagination .page-link:hover,
+        .pagination .page-item.active .page-link {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        footer {
+            background-color: #D7CCC8;
+            padding: 40px 0;
+            margin-top: 80px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg sticky-top bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">RJ's.</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav text-center">
+                    <li class="nav-item mx-2"><a class="nav-link" href="shop.html">Shop</a></li>
+                    <li class="nav-item mx-2"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item mx-2"><a class="nav-link active" href="blog.html">Journal</a></li>
+                    <li class="nav-item mx-2"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="d-flex justify-content-center align-items-center gap-2 mt-3 mt-lg-0">
+                <a href="#" class="text-dark me-3"><i class="fas fa-search"></i></a>
+                <a href="https://wa.me/6281234567890" target="_blank" class="btn btn-success rounded-0">
+                    <i class="fab fa-whatsapp me-2"></i>WhatsApp
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <h1 class="display-4 fw-bold">The Journal</h1>
+            <p class="text-muted">Stories about chocolate, lifestyle, and happiness.</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="container">
+            <div class="featured-card">
+                <div class="row align-items-center">
+                    <div class="col-lg-7 mb-4 mb-lg-0">
+                        <img src="assets/images/process_kitchen.png" class="featured-img" alt="Featured">
+                    </div>
+                    <div class="col-lg-5 ps-lg-5">
+                        <span class="meta-text">Editors Pick &bull; Jan 28, 2026</span>
+                        <h2 class="display-6 fw-bold mb-3"><a href="#" class="text-dark text-decoration-none">Rahasia di
+                                Balik Tekstur 'Melting' RJ's Bullets</a></h2>
+                        <p class="text-muted mb-4">
+                            Pernah bertanya-tanya mengapa cokelat kami bisa lumer seketika saat menyentuh lidah?
+                            Simak proses conching selama 72 jam yang kami lakukan demi kesempurnaan rasa.
+                        </p>
+                        <a href="single-post.html" class="btn btn-outline-dark rounded-0 px-4">Read Full Story</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-5">
+                <div class="col-lg-8">
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="card blog-card">
+                                <img src="assets/images/cocoa_ingredients.png" class="card-img-top" alt="Blog 1">
+                                <div class="card-body px-0 pt-0">
+                                    <span class="meta-text">Sourcing &bull; Jan 20, 2026</span>
+                                    <h4 class="blog-title"><a href="#">Perjalanan ke Kebun Kakao di Lampung</a></h4>
+                                    <p class="text-muted small">Menemui petani lokal yang menjadi mitra setia kami sejak
+                                        tahun 2015.</p>
+                                    <a href="#" class="read-more">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card blog-card">
+                                <img src="assets/images/blog_hot_cocoa.png" class="card-img-top" alt="Blog 2">
+                                <div class="card-body px-0 pt-0">
+                                    <span class="meta-text">Recipes &bull; Jan 15, 2026</span>
+                                    <h4 class="blog-title"><a href="#">Resep Hot Chocolate Klasik ala RJ's</a></h4>
+                                    <p class="text-muted small">Cara mudah membuat minuman cokelat hangat yang creamy di
+                                        rumah.</p>
+                                    <a href="#" class="read-more">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card blog-card">
+                                <img src="assets/images/prod_pink.png" class="card-img-top" alt="Blog 3">
+                                <div class="card-body px-0 pt-0">
+                                    <span class="meta-text">Lifestyle &bull; Jan 10, 2026</span>
+                                    <h4 class="blog-title"><a href="#">Panduan Memilih Kado Valentine</a></h4>
+                                    <p class="text-muted small">Bingung memilih varian rasa? Cek panduan kepribadian
+                                        cokelat
+                                        ini.</p>
+                                    <a href="#" class="read-more">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card blog-card">
+                                <img src="assets/images/team_group.png" class="card-img-top" alt="Blog 4">
+                                <div class="card-body px-0 pt-0">
+                                    <span class="meta-text">Events &bull; Jan 05, 2026</span>
+                                    <h4 class="blog-title"><a href="#">RJ's Pop-Up Store di Jakarta</a></h4>
+                                    <p class="text-muted small">Keseruan grand opening pop-up store kami di Senayan Park
+                                        minggu lalu.</p>
+                                    <a href="#" class="read-more">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <nav class="mt-5">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item disabled"><a class="page-link" href="#">&laquo;</a></li>
+                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
+                        </ul>
+                    </nav>
+                </div>
+
+                <div class="col-lg-4 ps-lg-5">
+                    <div class="mb-5">
+                        <h5 class="sidebar-title">Search</h5>
+                        <div class="input-group">
+                            <input type="text" class="form-control border-end-0" placeholder="Search articles...">
+                            <span class="input-group-text bg-white border-start-0"><i
+                                    class="fas fa-search text-muted"></i></span>
+                        </div>
+                    </div>
+
+                    <div class="mb-5">
+                        <h5 class="sidebar-title">Categories</h5>
+                        <ul class="category-list">
+                            <li><a href="#">Behind the Scenes <span>(4)</span></a></li>
+                            <li><a href="#">Recipes & How-To <span>(8)</span></a></li>
+                            <li><a href="#">Lifestyle <span>(3)</span></a></li>
+                            <li><a href="#">Events <span>(2)</span></a></li>
+                            <li><a href="#">Sustainability <span>(5)</span></a></li>
+                        </ul>
+                    </div>
+
+                    <div class="p-4 rounded-3" style="background-color: #EFEBE9;">
+                        <h5 class="fw-bold mb-2">Subscribe</h5>
+                        <p class="text-muted small mb-3">Dapatkan update cerita manis terbaru langsung di inbox Anda.
+                        </p>
+                        <input type="email" class="form-control mb-2" placeholder="Your email">
+                        <button class="btn btn-dark w-100 rounded-0">Sign Up</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="text-center">
+            <div class="container">
+                <div class="mb-4">
+                    <a class="navbar-brand fw-bold fs-3" href="#">RJ's.</a>
+                </div>
+                <p class="text-muted small">&copy; 2026 RJ's Confectionery. All rights reserved.</p>
+            </div>
+        </footer>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
