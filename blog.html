@@ -102,7 +102,7 @@
 
         .blog-title {
             font-weight: 700;
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             margin-bottom: 10px;
             line-height: 1.3;
         }
@@ -152,11 +152,20 @@
             display: flex;
             justify-content: space-between;
             transition: 0.2s;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
         }
 
-        .category-list a:hover {
-            color: var(--primary-color);
-            padding-left: 5px;
+        .category-list a:hover,
+        .category-list a.active {
+            color: white;
+            background-color: var(--primary-color);
+            padding-left: 15px;
+        }
+
+        .category-list a.active span {
+            color: white;
         }
 
         /* Pagination Custom */
@@ -166,6 +175,7 @@
             border: 1px solid #D7CCC8;
             margin: 0 5px;
             border-radius: 5px;
+            cursor: pointer;
         }
 
         .pagination .page-link:hover,
@@ -175,10 +185,81 @@
             border-color: var(--primary-color);
         }
 
+        /* No results */
+        .no-results {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-muted);
+        }
+
+        .no-results i {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            opacity: 0.5;
+        }
+
+        /* Search highlight */
+        .search-highlight {
+            background-color: #fff3cd;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+
+        /* Category badge */
+        .category-badge {
+            display: inline-block;
+            font-size: 0.7rem;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 20px;
+            margin-bottom: 10px;
+        }
+
+        /* Toast notification */
+        .toast-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1055;
+        }
+
         footer {
             background-color: #D7CCC8;
             padding: 40px 0;
             margin-top: 80px;
+        }
+
+        /* Filter active state indicator */
+        .filter-info {
+            background: #fff;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            display: none;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .filter-info.show {
+            display: flex;
+        }
+
+        .clear-filter {
+            color: var(--primary-color);
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .clear-filter:hover {
+            text-decoration: underline;
+        }
+
+        /* Results count */
+        .results-count {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
         }
     </style>
 </head>
@@ -200,7 +281,6 @@
                 </ul>
             </div>
             <div class="d-flex justify-content-center align-items-center gap-2 mt-3 mt-lg-0">
-                <a href="#" class="text-dark me-3"><i class="fas fa-search"></i></a>
                 <a href="https://wa.me/6281234567890" target="_blank" class="btn btn-success rounded-0">
                     <i class="fab fa-whatsapp me-2"></i>WhatsApp
                 </a>
@@ -216,132 +296,518 @@
     </header>
 
     <div class="container">
-        <div class="container">
-            <div class="featured-card">
-                <div class="row align-items-center">
-                    <div class="col-lg-7 mb-4 mb-lg-0">
-                        <img src="assets/images/process_kitchen.png" class="featured-img" alt="Featured">
-                    </div>
-                    <div class="col-lg-5 ps-lg-5">
-                        <span class="meta-text">Editors Pick &bull; Jan 28, 2026</span>
-                        <h2 class="display-6 fw-bold mb-3"><a href="#" class="text-dark text-decoration-none">Rahasia di
-                                Balik Tekstur 'Melting' RJ's Bullets</a></h2>
-                        <p class="text-muted mb-4">
-                            Pernah bertanya-tanya mengapa cokelat kami bisa lumer seketika saat menyentuh lidah?
-                            Simak proses conching selama 72 jam yang kami lakukan demi kesempurnaan rasa.
-                        </p>
-                        <a href="single-post.html" class="btn btn-outline-dark rounded-0 px-4">Read Full Story</a>
-                    </div>
+        <!-- Featured Post -->
+        <div class="featured-card" id="featured-section">
+            <div class="row align-items-center">
+                <div class="col-lg-7 mb-4 mb-lg-0">
+                    <img src="assets/images/process_kitchen.png" class="featured-img" alt="Featured">
                 </div>
-            </div>
-
-            <div class="row g-5">
-                <div class="col-lg-8">
-                    <div class="row g-4">
-                        <div class="col-md-6">
-                            <div class="card blog-card">
-                                <img src="assets/images/cocoa_ingredients.png" class="card-img-top" alt="Blog 1">
-                                <div class="card-body px-0 pt-0">
-                                    <span class="meta-text">Sourcing &bull; Jan 20, 2026</span>
-                                    <h4 class="blog-title"><a href="#">Perjalanan ke Kebun Kakao di Lampung</a></h4>
-                                    <p class="text-muted small">Menemui petani lokal yang menjadi mitra setia kami sejak
-                                        tahun 2015.</p>
-                                    <a href="#" class="read-more">Read More</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="card blog-card">
-                                <img src="assets/images/blog_hot_cocoa.png" class="card-img-top" alt="Blog 2">
-                                <div class="card-body px-0 pt-0">
-                                    <span class="meta-text">Recipes &bull; Jan 15, 2026</span>
-                                    <h4 class="blog-title"><a href="#">Resep Hot Chocolate Klasik ala RJ's</a></h4>
-                                    <p class="text-muted small">Cara mudah membuat minuman cokelat hangat yang creamy di
-                                        rumah.</p>
-                                    <a href="#" class="read-more">Read More</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="card blog-card">
-                                <img src="assets/images/prod_pink.png" class="card-img-top" alt="Blog 3">
-                                <div class="card-body px-0 pt-0">
-                                    <span class="meta-text">Lifestyle &bull; Jan 10, 2026</span>
-                                    <h4 class="blog-title"><a href="#">Panduan Memilih Kado Valentine</a></h4>
-                                    <p class="text-muted small">Bingung memilih varian rasa? Cek panduan kepribadian
-                                        cokelat
-                                        ini.</p>
-                                    <a href="#" class="read-more">Read More</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="card blog-card">
-                                <img src="assets/images/team_group.png" class="card-img-top" alt="Blog 4">
-                                <div class="card-body px-0 pt-0">
-                                    <span class="meta-text">Events &bull; Jan 05, 2026</span>
-                                    <h4 class="blog-title"><a href="#">RJ's Pop-Up Store di Jakarta</a></h4>
-                                    <p class="text-muted small">Keseruan grand opening pop-up store kami di Senayan Park
-                                        minggu lalu.</p>
-                                    <a href="#" class="read-more">Read More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <nav class="mt-5">
-                        <ul class="pagination justify-content-center">
-                            <li class="page-item disabled"><a class="page-link" href="#">&laquo;</a></li>
-                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
-                        </ul>
-                    </nav>
-                </div>
-
-                <div class="col-lg-4 ps-lg-5">
-                    <div class="mb-5">
-                        <h5 class="sidebar-title">Search</h5>
-                        <div class="input-group">
-                            <input type="text" class="form-control border-end-0" placeholder="Search articles...">
-                            <span class="input-group-text bg-white border-start-0"><i
-                                    class="fas fa-search text-muted"></i></span>
-                        </div>
-                    </div>
-
-                    <div class="mb-5">
-                        <h5 class="sidebar-title">Categories</h5>
-                        <ul class="category-list">
-                            <li><a href="#">Behind the Scenes <span>(4)</span></a></li>
-                            <li><a href="#">Recipes & How-To <span>(8)</span></a></li>
-                            <li><a href="#">Lifestyle <span>(3)</span></a></li>
-                            <li><a href="#">Events <span>(2)</span></a></li>
-                            <li><a href="#">Sustainability <span>(5)</span></a></li>
-                        </ul>
-                    </div>
-
-                    <div class="p-4 rounded-3" style="background-color: #EFEBE9;">
-                        <h5 class="fw-bold mb-2">Subscribe</h5>
-                        <p class="text-muted small mb-3">Dapatkan update cerita manis terbaru langsung di inbox Anda.
-                        </p>
-                        <input type="email" class="form-control mb-2" placeholder="Your email">
-                        <button class="btn btn-dark w-100 rounded-0">Sign Up</button>
-                    </div>
+                <div class="col-lg-5 ps-lg-5">
+                    <span class="meta-text">Editors Pick &bull; Jan 28, 2026</span>
+                    <h2 class="display-6 fw-bold mb-3"><a href="single-post.html"
+                            class="text-dark text-decoration-none">Rahasia di
+                            Balik Tekstur 'Melting' RJ's Bullets</a></h2>
+                    <p class="text-muted mb-4">
+                        Pernah bertanya-tanya mengapa cokelat kami bisa lumer seketika saat menyentuh lidah?
+                        Simak proses conching selama 72 jam yang kami lakukan demi kesempurnaan rasa.
+                    </p>
+                    <a href="single-post.html" class="btn btn-outline-dark rounded-0 px-4">Read Full Story</a>
                 </div>
             </div>
         </div>
 
-        <footer class="text-center">
-            <div class="container">
-                <div class="mb-4">
-                    <a class="navbar-brand fw-bold fs-3" href="#">RJ's.</a>
+        <div class="row g-5">
+            <div class="col-lg-8">
+                <!-- Filter Info -->
+                <div class="filter-info" id="filter-info">
+                    <span><i class="fas fa-filter me-2"></i>Menampilkan: <strong id="filter-text">Semua
+                            Artikel</strong></span>
+                    <span class="clear-filter" onclick="clearFilters()"><i class="fas fa-times me-1"></i>Hapus
+                        Filter</span>
                 </div>
-                <p class="text-muted small">&copy; 2026 RJ's Confectionery. All rights reserved.</p>
-            </div>
-        </footer>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+                <!-- Results Count -->
+                <div class="results-count" id="results-count">
+                    Menampilkan <strong>0</strong> artikel
+                </div>
+
+                <!-- Blog Grid - Dynamic -->
+                <div class="row g-4" id="blog-grid">
+                    <!-- Blog cards will be injected here -->
+                </div>
+
+                <!-- Pagination -->
+                <nav class="mt-5" id="pagination-nav">
+                    <ul class="pagination justify-content-center" id="pagination-list">
+                        <!-- Pagination will be injected here -->
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="col-lg-4 ps-lg-5">
+                <!-- Search -->
+                <div class="mb-5">
+                    <h5 class="sidebar-title">Search</h5>
+                    <div class="input-group">
+                        <input type="text" class="form-control border-end-0" placeholder="Cari artikel..."
+                            id="search-input">
+                        <button class="input-group-text bg-white border-start-0" onclick="performSearch()"
+                            style="cursor: pointer;">
+                            <i class="fas fa-search text-muted"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Categories -->
+                <div class="mb-5">
+                    <h5 class="sidebar-title">Categories</h5>
+                    <ul class="category-list" id="category-list">
+                        <!-- Categories will be injected here -->
+                    </ul>
+                </div>
+
+                <!-- CTA Box -->
+                <div class="cta-box p-4 rounded-4 text-center"
+                    style="background: linear-gradient(135deg, #3E2723, #6D4C41); color: white;">
+                    <div class="mb-3">
+                        <i class="fas fa-gift" style="font-size: 2.5rem; opacity: 0.9;"></i>
+                    </div>
+                    <h4 class="fw-bold mb-2 text-white">Ingin Mencicipi Cokelat Premium?</h4>
+                    <p class="small mb-3 opacity-75">Dapatkan diskon 10% untuk pembelian pertama! Konsultasi rasa
+                        gratis.</p>
+                    <a href="https://wa.me/6281234567890?text=Halo%20RJ's,%20saya%20tertarik%20memesan%20cokelat%20premium.%20Boleh%20minta%20rekomendasi?"
+                        target="_blank" class="btn btn-success w-100 py-2 rounded-0">
+                        <i class="fab fa-whatsapp me-2"></i>Pesan Sekarang
+                    </a>
+                    <p class="mt-2 mb-0 small opacity-50"><i class="fas fa-clock me-1"></i>Respon dalam 5 menit</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="text-center">
+        <div class="container">
+            <div class="mb-4">
+                <a class="navbar-brand fw-bold fs-3" href="index.html">RJ's.</a>
+            </div>
+            <div class="mb-4">
+                <a href="shop.html" class="text-decoration-none text-muted mx-2">Shop</a>
+                <a href="about.html" class="text-decoration-none text-muted mx-2">About</a>
+                <a href="blog.html" class="text-decoration-none text-muted mx-2">Journal</a>
+                <a href="contact.html" class="text-decoration-none text-muted mx-2">Contact</a>
+            </div>
+            <p class="text-muted small">&copy; 2026 RJ's Confectionery. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div class="toast-container">
+        <div class="toast align-items-center text-bg-success border-0" role="alert" id="successToast">
+            <div class="d-flex">
+                <div class="toast-body" id="toast-message">
+                    Berhasil!
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // ============ DATA ============
+        const articles = [
+            {
+                id: 1,
+                title: "Perjalanan ke Kebun Kakao di Lampung",
+                excerpt: "Menemui petani lokal yang menjadi mitra setia kami sejak tahun 2015.",
+                category: "sourcing",
+                categoryLabel: "Sourcing",
+                date: "2026-01-20",
+                dateFormatted: "Jan 20, 2026",
+                image: "assets/images/cocoa_ingredients.png",
+                featured: false
+            },
+            {
+                id: 2,
+                title: "Resep Hot Chocolate Klasik ala RJ's",
+                excerpt: "Cara mudah membuat minuman cokelat hangat yang creamy di rumah.",
+                category: "recipes",
+                categoryLabel: "Recipes & How-To",
+                date: "2026-01-15",
+                dateFormatted: "Jan 15, 2026",
+                image: "assets/images/blog_hot_cocoa.png",
+                featured: false
+            },
+            {
+                id: 3,
+                title: "Panduan Memilih Kado Valentine",
+                excerpt: "Bingung memilih varian rasa? Cek panduan kepribadian cokelat ini.",
+                category: "lifestyle",
+                categoryLabel: "Lifestyle",
+                date: "2026-01-10",
+                dateFormatted: "Jan 10, 2026",
+                image: "assets/images/prod_pink.png",
+                featured: false
+            },
+            {
+                id: 4,
+                title: "RJ's Pop-Up Store di Jakarta",
+                excerpt: "Keseruan grand opening pop-up store kami di Senayan Park minggu lalu.",
+                category: "events",
+                categoryLabel: "Events",
+                date: "2026-01-05",
+                dateFormatted: "Jan 05, 2026",
+                image: "assets/images/team_group.png",
+                featured: false
+            },
+            {
+                id: 5,
+                title: "Bagaimana Kami Mengurangi Jejak Karbon",
+                excerpt: "Komitmen kami untuk keberlanjutan dan lingkungan yang lebih baik.",
+                category: "sustainability",
+                categoryLabel: "Sustainability",
+                date: "2025-12-28",
+                dateFormatted: "Dec 28, 2025",
+                image: "assets/images/blog_bean_to_bar.png",
+                featured: false
+            },
+            {
+                id: 6,
+                title: "Pairing Cokelat dengan Kopi",
+                excerpt: "Panduan memasangkan jenis cokelat dengan roasting kopi yang tepat.",
+                category: "recipes",
+                categoryLabel: "Recipes & How-To",
+                date: "2025-12-20",
+                dateFormatted: "Dec 20, 2025",
+                image: "assets/images/blog_coffee_pairing.png",
+                featured: false
+            },
+            {
+                id: 7,
+                title: "Di Balik Layar: Proses Conching 72 Jam",
+                excerpt: "Mengapa kami menghabiskan 3 hari penuh hanya untuk satu langkah produksi.",
+                category: "behind",
+                categoryLabel: "Behind the Scenes",
+                date: "2025-12-15",
+                dateFormatted: "Dec 15, 2025",
+                image: "assets/images/process_kitchen.png",
+                featured: false
+            },
+            {
+                id: 8,
+                title: "Workshop Membuat Cokelat untuk Pemula",
+                excerpt: "Recap workshop perdana kami yang diikuti 30 peserta antusias.",
+                category: "events",
+                categoryLabel: "Events",
+                date: "2025-12-10",
+                dateFormatted: "Dec 10, 2025",
+                image: "assets/images/hero_main.png",
+                featured: false
+            },
+            {
+                id: 9,
+                title: "5 Manfaat Kesehatan Dark Chocolate",
+                excerpt: "Fakta ilmiah mengapa dark chocolate baik untuk tubuh Anda.",
+                category: "lifestyle",
+                categoryLabel: "Lifestyle",
+                date: "2025-12-05",
+                dateFormatted: "Dec 05, 2025",
+                image: "assets/images/prod_dark.png",
+                featured: false
+            },
+            {
+                id: 10,
+                title: "Kolaborasi dengan Petani Sulawesi",
+                excerpt: "Memperluas jaringan sourcing ke petani kakao Sulawesi Tengah.",
+                category: "sourcing",
+                categoryLabel: "Sourcing",
+                date: "2025-11-28",
+                dateFormatted: "Nov 28, 2025",
+                image: "assets/images/cocoa_ingredients.png",
+                featured: false
+            }
+        ];
+
+        const categories = [
+            { id: "all", label: "Semua Artikel", count: articles.length },
+            { id: "behind", label: "Behind the Scenes", count: articles.filter(a => a.category === "behind").length },
+            { id: "recipes", label: "Recipes & How-To", count: articles.filter(a => a.category === "recipes").length },
+            { id: "lifestyle", label: "Lifestyle", count: articles.filter(a => a.category === "lifestyle").length },
+            { id: "events", label: "Events", count: articles.filter(a => a.category === "events").length },
+            { id: "sustainability", label: "Sustainability", count: articles.filter(a => a.category === "sustainability").length },
+            { id: "sourcing", label: "Sourcing", count: articles.filter(a => a.category === "sourcing").length }
+        ];
+
+        // ============ STATE ============
+        let state = {
+            currentCategory: "all",
+            searchQuery: "",
+            currentPage: 1,
+            itemsPerPage: 4
+        };
+
+        // ============ ELEMENTS ============
+        const blogGrid = document.getElementById('blog-grid');
+        const paginationList = document.getElementById('pagination-list');
+        const categoryList = document.getElementById('category-list');
+        const searchInput = document.getElementById('search-input');
+        const resultsCount = document.getElementById('results-count');
+        const filterInfo = document.getElementById('filter-info');
+        const filterText = document.getElementById('filter-text');
+        const featuredSection = document.getElementById('featured-section');
+
+        // ============ INIT ============
+        function init() {
+            renderCategories();
+            render();
+            setupEventListeners();
+        }
+
+        // ============ RENDER CATEGORIES ============
+        function renderCategories() {
+            categoryList.innerHTML = categories.map(cat => `
+                <li>
+                    <a href="#" data-category="${cat.id}" class="${cat.id === state.currentCategory ? 'active' : ''}" onclick="filterByCategory('${cat.id}'); return false;">
+                        ${cat.label} <span>(${cat.count})</span>
+                    </a>
+                </li>
+            `).join('');
+        }
+
+        // ============ FILTER LOGIC ============
+        function getFilteredArticles() {
+            let filtered = [...articles];
+
+            // Category filter
+            if (state.currentCategory !== "all") {
+                filtered = filtered.filter(a => a.category === state.currentCategory);
+            }
+
+            // Search filter
+            if (state.searchQuery.trim() !== "") {
+                const query = state.searchQuery.toLowerCase();
+                filtered = filtered.filter(a =>
+                    a.title.toLowerCase().includes(query) ||
+                    a.excerpt.toLowerCase().includes(query) ||
+                    a.categoryLabel.toLowerCase().includes(query)
+                );
+            }
+
+            // Sort by date (newest first)
+            filtered.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+            return filtered;
+        }
+
+        // ============ RENDER BLOG GRID ============
+        function render() {
+            const filtered = getFilteredArticles();
+            const totalPages = Math.ceil(filtered.length / state.itemsPerPage);
+
+            // Ensure current page is valid
+            if (state.currentPage > totalPages) state.currentPage = totalPages || 1;
+
+            const start = (state.currentPage - 1) * state.itemsPerPage;
+            const end = start + state.itemsPerPage;
+            const paginatedItems = filtered.slice(start, end);
+
+            // Update results count
+            resultsCount.innerHTML = `Menampilkan <strong>${filtered.length}</strong> artikel`;
+
+            // Update filter info
+            if (state.currentCategory !== "all" || state.searchQuery.trim() !== "") {
+                filterInfo.classList.add('show');
+                let filterLabel = [];
+                if (state.currentCategory !== "all") {
+                    const cat = categories.find(c => c.id === state.currentCategory);
+                    filterLabel.push(cat ? cat.label : state.currentCategory);
+                }
+                if (state.searchQuery.trim() !== "") {
+                    filterLabel.push(`"${state.searchQuery}"`);
+                }
+                filterText.textContent = filterLabel.join(' - ');
+                featuredSection.style.display = 'none';
+            } else {
+                filterInfo.classList.remove('show');
+                featuredSection.style.display = 'block';
+            }
+
+            // Render blog cards
+            if (filtered.length === 0) {
+                blogGrid.innerHTML = `
+                    <div class="col-12 no-results">
+                        <i class="fas fa-search"></i>
+                        <h4>Tidak ada artikel ditemukan</h4>
+                        <p>Coba ubah kata kunci pencarian atau kategori filter Anda.</p>
+                        <button class="btn btn-outline-dark rounded-0 mt-3" onclick="clearFilters()">
+                            Lihat Semua Artikel
+                        </button>
+                    </div>
+                `;
+            } else {
+                blogGrid.innerHTML = paginatedItems.map(article => `
+                    <div class="col-md-6">
+                        <div class="card blog-card">
+                            <img src="${article.image}" class="card-img-top" alt="${article.title}">
+                            <div class="card-body px-0 pt-0">
+                                <span class="category-badge">${article.categoryLabel}</span>
+                                <span class="meta-text">${article.dateFormatted}</span>
+                                <h4 class="blog-title"><a href="single-post.html">${highlightSearch(article.title)}</a></h4>
+                                <p class="text-muted small">${highlightSearch(article.excerpt)}</p>
+                                <a href="single-post.html" class="read-more">Read More <i class="fas fa-arrow-right ms-1"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            // Render pagination
+            renderPagination(totalPages);
+        }
+
+        // ============ HIGHLIGHT SEARCH ============
+        function highlightSearch(text) {
+            if (state.searchQuery.trim() === "") return text;
+            const regex = new RegExp(`(${escapeRegex(state.searchQuery)})`, 'gi');
+            return text.replace(regex, '<span class="search-highlight">$1</span>');
+        }
+
+        function escapeRegex(string) {
+            return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        }
+
+        // ============ RENDER PAGINATION ============
+        function renderPagination(totalPages) {
+            if (totalPages <= 1) {
+                paginationList.innerHTML = '';
+                return;
+            }
+
+            let html = '';
+
+            // Previous
+            html += `<li class="page-item ${state.currentPage === 1 ? 'disabled' : ''}">
+                        <a class="page-link" href="#" onclick="changePage(${state.currentPage - 1}); return false;">&laquo;</a>
+                     </li>`;
+
+            // Page numbers
+            for (let i = 1; i <= totalPages; i++) {
+                html += `<li class="page-item ${i === state.currentPage ? 'active' : ''}">
+                            <a class="page-link" href="#" onclick="changePage(${i}); return false;">${i}</a>
+                         </li>`;
+            }
+
+            // Next
+            html += `<li class="page-item ${state.currentPage === totalPages ? 'disabled' : ''}">
+                        <a class="page-link" href="#" onclick="changePage(${state.currentPage + 1}); return false;">&raquo;</a>
+                     </li>`;
+
+            paginationList.innerHTML = html;
+        }
+
+        // ============ ACTIONS ============
+        window.filterByCategory = function (categoryId) {
+            state.currentCategory = categoryId;
+            state.currentPage = 1;
+
+            // Update active state in category list
+            document.querySelectorAll('.category-list a').forEach(link => {
+                link.classList.remove('active');
+                if (link.dataset.category === categoryId) {
+                    link.classList.add('active');
+                }
+            });
+
+            render();
+
+            // Scroll to blog grid
+            document.getElementById('blog-grid').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        };
+
+        window.changePage = function (page) {
+            if (page < 1) return;
+            state.currentPage = page;
+            render();
+
+            // Scroll to top of blog grid
+            document.getElementById('blog-grid').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        };
+
+        window.performSearch = function () {
+            state.searchQuery = searchInput.value;
+            state.currentPage = 1;
+            render();
+        };
+
+        window.clearFilters = function () {
+            state.currentCategory = "all";
+            state.searchQuery = "";
+            state.currentPage = 1;
+            searchInput.value = "";
+
+            // Reset category active states
+            document.querySelectorAll('.category-list a').forEach(link => {
+                link.classList.remove('active');
+                if (link.dataset.category === 'all') {
+                    link.classList.add('active');
+                }
+            });
+
+            render();
+        };
+
+        window.handleSubscribe = function () {
+            const email = document.getElementById('subscribe-email').value;
+
+            if (!email || !email.includes('@')) {
+                showToast('Mohon masukkan email yang valid', 'warning');
+                return;
+            }
+
+            // Open WhatsApp with subscription message
+            const message = encodeURIComponent(`Halo RJ's! Saya ingin berlangganan newsletter dengan email: ${email}`);
+            window.open(`https://wa.me/6281234567890?text=${message}`, '_blank');
+
+            // Clear input and show success
+            document.getElementById('subscribe-email').value = '';
+            showToast('Mengarahkan ke WhatsApp...', 'success');
+        };
+
+        // ============ TOAST NOTIFICATION ============
+        function showToast(message, type = 'success') {
+            const toastEl = document.getElementById('successToast');
+            const toastMessage = document.getElementById('toast-message');
+
+            toastMessage.textContent = message;
+            toastEl.className = `toast align-items-center border-0 text-bg-${type}`;
+
+            const toast = new bootstrap.Toast(toastEl);
+            toast.show();
+        }
+
+        // ============ EVENT LISTENERS ============
+        function setupEventListeners() {
+            // Search on Enter key
+            searchInput.addEventListener('keypress', function (e) {
+                if (e.key === 'Enter') {
+                    performSearch();
+                }
+            });
+
+            // Search on input (debounced)
+            let searchTimeout;
+            searchInput.addEventListener('input', function () {
+                clearTimeout(searchTimeout);
+                searchTimeout = setTimeout(() => {
+                    performSearch();
+                }, 300);
+            });
+        }
+
+        // ============ RUN ============
+        init();
+    </script>
 </body>
 
 </html>
